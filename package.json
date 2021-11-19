@@ -4,7 +4,8 @@
   "main": "server.ts",
   "scripts": {
     "dev": "nodemon src/server.ts",
-    "build": "rm -rf build/ && prettier --write src/ && tsc"
+    "build": "rm -rf build/ && prettier --write src/ && tsc",
+    "test": "jest --testTimeout=10000"
   },
   "repository": "https://github.com/benjamin-t-wilson/glowing-journey.git",
   "author": "Benjamin Wilson <whatsup@btwicode.com>",
@@ -17,5 +18,32 @@
     "nodemon": "^2.0.15",
     "ts-node": "^10.4.0",
     "typescript": "^4.5.2"
+  },
+  "devDependencies": {
+    "@types/jest": "^27.0.3",
+    "@types/supertest": "^2.0.11",
+    "jest": "^27.3.1",
+    "supertest": "^6.1.6",
+    "ts-jest": "^27.0.7"
+  },
+  "jest": {
+    "testEnvironment": "node",
+    "coveragePathIgnorePatterns": [
+      "/node_modules/"
+    ],
+    "testMatch": [
+      "**/test/*.ts"
+    ],
+    "moduleFileExtensions": [
+      "ts",
+      "js",
+      "json",
+      "node"
+    ],
+    "collectCoverage": true,
+    "coverageDirectory": "coverage",
+    "transform": {
+      "\\.tsx?$": "ts-jest"
+    }
   }
 }

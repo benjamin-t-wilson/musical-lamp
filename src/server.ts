@@ -1,5 +1,6 @@
 import http, { Server } from "http";
 import express, { Express } from "express";
+import PullRequestRoute from "./routes/PullRequestRoute";
 
 const server: Express = express();
 
@@ -20,9 +21,13 @@ server.use((req, res, next) => {
   next();
 });
 
+server.use("/pullrequests", PullRequestRoute);
+
 const httpServer: Server = http.createServer(server);
 const PORT: string = process.env.PORT ?? "6060";
 
 httpServer.listen(PORT, () =>
   console.log(`The server is running on port ${PORT}`)
 );
+
+export default httpServer
