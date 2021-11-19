@@ -1,4 +1,4 @@
-import axios, { AxiosResponse } from "axios";
+import axios from "axios";
 import { Request, Response, NextFunction } from "express";
 
 export async function isRouteValid(
