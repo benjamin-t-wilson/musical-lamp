@@ -29,3 +29,5 @@ const PORT: string = process.env.PORT ?? "6060";
 httpServer.listen(PORT, () =>
   console.log(`The server is running on port ${PORT}`)
 );
+
+export default httpServer
