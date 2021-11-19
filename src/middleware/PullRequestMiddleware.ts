@@ -1,5 +1,6 @@
 import axios from "axios";
 import { Request, Response, NextFunction } from "express";
+import PullRequestStateEnum from "../models/PullRequestStateEnum";
 
 export async function isRouteValid(
   req: Request,
@@ -26,4 +27,14 @@ export async function isRouteValid(
   }
 
   next();
+}
+
+export function isStateValid(req: Request, res: Response, next: NextFunction) {
+  const state: string = req.query.state ? req.query.state.toString() : "";
+
+  if (!state || (Object.values(PullRequestStateEnum) as string[]).includes(state)) {
+    next();
+  } else {
+    return res.status(400).json({ message: "Invalid state" });
+  }
 }
