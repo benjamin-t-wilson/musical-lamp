@@ -1,16 +1,16 @@
-import axios, { AxiosResponse } from "axios";
+import axios, { AxiosInstance, AxiosResponse } from "axios";
 import CommitModel from "../models/CommitModel";
 import PullRequestModel from "../models/PullRequestModel";
 import UserModel from "../models/UserModel";
 
 const baseUrl: string = "https://api.github.com/repos/";
-const httpClient = axios.create({ baseURL: baseUrl });
+const httpClient: AxiosInstance = axios.create({ baseURL: baseUrl });
 
 export async function getPullRequests(
   username: string,
   repo: string,
   state: string = ""
-) {
+): Promise<PullRequestModel[]> {
   const pullRequestBaseUrl: string = `/${username}/${repo}/pulls`;
   const stateModifier: string = state ? `?state=${state}` : "";
 

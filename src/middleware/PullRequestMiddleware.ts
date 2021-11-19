@@ -1,4 +1,4 @@
-import axios from "axios";
+import axios, { AxiosInstance } from "axios";
 import { Request, Response, NextFunction } from "express";
 import PullRequestStateEnum from "../models/PullRequestStateEnum";
 
@@ -15,7 +15,7 @@ export async function isRouteValid(
       .json({ message: "Must provide username and repo name" });
   }
   const baseUrl: string = "https://api.github.com/repos/";
-  const httpClient = axios.create({ baseURL: baseUrl });
+  const httpClient: AxiosInstance = axios.create({ baseURL: baseUrl });
   const pullRequestBaseUrl: string = `/${username}/${repo}/pulls`;
 
   try {
