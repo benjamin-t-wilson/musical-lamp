@@ -57,14 +57,14 @@ curl -i -H 'Accept: application/json' http://localhost:8081//pullrequests/benjam
 			"url":  string
 		},
 		"commits":  [
-			{
+				{
 				"url":  string,
 				"name":  string,
 				"email":  string,
 				"message":  string
 				}
 			]
-		}
+	}
 ]
 ```
 
